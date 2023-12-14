@@ -1,24 +1,23 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 const initialState = {
-  c: 0,
+  count: 0,
+  num: 0,
 };
 
-const customReducer = createReducer(initialState, {
-  increment: (state) => {
-    state.c += 1;
+const myOwnReducer = createReducer(initialState, {
+  incrementByOne: (state) => {
+    state.count += 1;
   },
-
-  incrementBy20: (state, action) => {
-    state.c += action.payload;
+  decrementByOne: (state) => {
+    state.count -= 1;
   },
-
-  decrement: (state) => {
-    state.c -= 1;
+  table: (state, action) => {
+    state.num += action.payload;
   },
-  decrementBy20: (state, action) => {
-    state.c = state.c - action.payload;
+  reset: (state) => {
+    state.count = state.num = 0;
   },
 });
 
-export default customReducer;
+export default myOwnReducer;

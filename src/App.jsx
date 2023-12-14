@@ -1,18 +1,16 @@
 import React from "react";
 import Home from "./components/home.jsx";
-import { Provider } from "react-redux";
-import Store from "./components/store.js";
 import { useSelector } from "react-redux";
+// red;
+
 function App() {
-  const { c } = useSelector((state) => state.custom);
+  const { num, count } = useSelector((state) => state.y);
 
   return (
     <div style={{ textAlign: "center" }}>
-      {/* <h3>{c}</h3> */}
-
-      <Provider store={Store}>
-        <Home />
-      </Provider>
+      <h1>{count}</h1>
+      <h2>{num}</h2>
+      <Home />
     </div>
   );
 }

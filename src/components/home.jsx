@@ -1,30 +1,36 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function home() {
   const dispatch = useDispatch();
-  const { c } = useSelector((state) => {
-    return state.custom;
-  });
+  let tablenum = 10;
 
   const addbtn = () => {
     dispatch({
-      type: "increment",
+      type: "incrementByOne",
+    });
+  };
+  const table = (tablenum) => {
+    dispatch({
+      type: "table",
+      payload: tablenum,
     });
   };
   const subbtn = () => {
+    dispatch({ type: "decrementByOne" });
+  };
+
+  const resetfunc = () => {
     dispatch({
-      type: "decrement",
+      type: "reset",
     });
   };
 
-  const addbtn20 = () => {
-    dispatch({
-      type: "incrementBy20",
-      payload: 20,
-    });
-  };
-
+  // if (tablenum == 0) {
+  //   return (tablenum = prompt(
+  //     "Enter the number you want to continue the table"
+  //   ));
+  // }
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Home</h1>
@@ -32,11 +38,14 @@ function home() {
       <button onClick={addbtn}>Increment</button>
       <br />
       <br />
-      <button onClick={addbtn20}>Increment by 20</button>
+      <button onClick={() => table(tablenum)}>Table of 2</button>
       <br />
-      {/* <h2>{c}</h2> */}
+      <h2></h2>
       <br />
       <button onClick={subbtn}>decrement</button>
+      <br />
+      <br />
+      <button onClick={resetfunc}>Reset All</button>
     </div>
   );
 }

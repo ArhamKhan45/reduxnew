@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import CustomReducer from "./reducers";
+import MyOwnReducer from "./reducers";
 
 const store = configureStore({
   reducer: {
-    custom: CustomReducer,
+    y: MyOwnReducer,
   },
 });
 
